@@ -1,0 +1,74 @@
+{
+    "USD": {
+        "name": "United States Dollar",
+        "code": "USD",
+        "symbol": "$",
+        "decimal_digits": 2
+    },
+    "EUR": {
+        "name": "Euro",
+        "code": "EUR",
+        "symbol": "\u20ac",
+        "decimal_digits": 2
+    },
+    "JPY": {
+        "name": "Japanese Yen",
+        "code": "JPY",
+        "symbol": "\u00a5",
+        "decimal_digits": 0
+    },
+    "GBP": {
+        "name": "British Pound Sterling",
+        "code": "GBP",
+        "symbol": "\u00a3",
+        "decimal_digits": 2
+    },
+    "AUD": {
+        "name": "Australian Dollar",
+        "code": "AUD",
+        "symbol": "A$",
+        "decimal_digits": 2
+    },
+    "CAD": {
+        "name": "Canadian Dollar",
+        "code": "CAD",
+        "symbol": "C$",
+        "decimal_digits": 2
+    },
+    "CHF": {
+        "name": "Swiss Franc",
+        "code": "CHF",
+        "symbol": "CHF",
+        "decimal_digits": 2
+    },
+    "CNY": {
+        "name": "Chinese Yuan",
+        "code": "CNY",
+        "symbol": "\u00a5",
+        "decimal_digits": 2
+    },
+    "SEK": {
+        "name": "Swedish Krona",
+        "code": "SEK",
+        "symbol": "kr",
+        "decimal_digits": 2
+    },
+    "NZD": {
+        "name": "New Zealand Dollar",
+        "code": "NZD",
+        "symbol": "NZ$",
+        "decimal_digits": 2
+    },
+    "PLN": {
+        "name": "Polish Zloty",
+        "code": "PLN",
+        "symbol": "z\u0142",
+        "decimal_digits": 2
+    },
+    "UAH": {
+        "name": "Ukrainian Hryvnia",
+        "code": "UAH",
+        "symbol": "\u20b4",
+        "decimal_digits": 2
+    }
+}
