@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D84247842D0B1418007FDAF2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D84247832D0B1418007FDAF2 /* SnapKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D842464B2D0ADB90007FDAF2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D84247842D0B1418007FDAF2 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = CurrencyConverter;
 			packageProductDependencies = (
+				D84247832D0B1418007FDAF2 /* SnapKit */,
 			);
 			productName = CurrencyConverter;
 			productReference = D84246342D0ADB8F007FDAF2 /* CurrencyConverter.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = D842462B2D0ADB8F007FDAF2;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D84247822D0B1418007FDAF2 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D84246352D0ADB8F007FDAF2 /* Products */;
 			projectDirPath = "";
@@ -569,6 +578,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D84247822D0B1418007FDAF2 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D84247832D0B1418007FDAF2 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D84247822D0B1418007FDAF2 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D842462C2D0ADB8F007FDAF2 /* Project object */;
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 // Defines a service for handling currency-related operations
-protocol CurrencyServiceProtocol {
+protocol CurrencyService {
     func convert(request: CurrencyConversionRequest,
                  completion: @escaping (Result<CurrencyConversionResponse, Error>) -> Void)
     func getCurrencies(completion: @escaping (Result<[String: Currency], Error>) -> Void)

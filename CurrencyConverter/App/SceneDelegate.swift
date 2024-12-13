@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         let navController = UINavigationController()
-        let mainVC = MainViewController()
+        let mainVC = CurrencyTableViewController(style: .insetGrouped)
+        mainVC.viewModel = CurrencyTableViewModel(service: DefaultCurrencyService(), delegate: mainVC)
         navController.pushViewController(mainVC, animated: false)
         
         window.rootViewController = navController

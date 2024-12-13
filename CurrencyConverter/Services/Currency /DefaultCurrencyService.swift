@@ -8,7 +8,7 @@
 import Foundation
 
 // Default Service Implementation
-class DefaultCurrencyService: CurrencyServiceProtocol {
+class DefaultCurrencyService: CurrencyService {
     private let baseCurrencyConversionURL = "http://api.evp.lt/currency/commercial/exchange/"
     
     private let networkLoader: DataLoader
