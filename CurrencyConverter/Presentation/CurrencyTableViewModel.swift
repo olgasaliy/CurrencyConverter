@@ -125,7 +125,8 @@ class CurrencyTableViewModel {
             guard
                 let sourceSection = self?.sections[.sourceCurrency],
                 let targetSection = self?.sections[.targetCurrency],
-                !sourceSection.amount.isEmpty,
+                let validInput = self?.validateInput(sourceSection.amount),
+                validInput,
                 let fromAmount = Double(sourceSection.amount),
                 let fromCurrency = sourceSection.currency,
                 let toCurrency = targetSection.currency
@@ -191,5 +192,18 @@ class CurrencyTableViewModel {
             return nil
         }
         return IndexPath(row: rowIndex, section: sectionType.rawValue)
+    }
+    
+    private func validateInput(_ input: String) -> Bool {
+        guard !input.isEmpty else {
+            return false
+        }
+        
+        if Double(input) != nil {
+            return true
+        } else {
+            delegate?.didErrorOccur(error: "Please enter a correct amount.")
+            return false
+        }
     }
 }
