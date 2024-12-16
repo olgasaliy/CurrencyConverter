@@ -11,6 +11,7 @@ protocol CurrencyTableViewModelDelegate: AnyObject {
     func didGetCurrencies()
     func shouldReloadRow(at indexPath: IndexPath?)
     func didErrorOccur(error: String)
+    func didStartLoading(_ startLoading: Bool)
 }
 
 class CurrencyTableViewModel {
@@ -20,6 +21,8 @@ class CurrencyTableViewModel {
     private let service: CurrencyService
     private weak var delegate: CurrencyTableViewModelDelegate?
     private var debounceTimer: DispatchWorkItem?
+    
+    private var timer: Timer?
 
     // MARK: - Init
     init(service: CurrencyService, delegate: CurrencyTableViewModelDelegate?) {
@@ -27,6 +30,11 @@ class CurrencyTableViewModel {
         self.delegate = delegate
         setupSections()
         fetchCurrencies()
+        startTimer()
+    }
+    
+    deinit {
+        stopTimer()
     }
 
     // MARK: - TableView Accessors
@@ -86,6 +94,28 @@ class CurrencyTableViewModel {
     func getListOfCurrenciesCodes() -> [String] {
         return currencies.map { $0.code }
     }
+    
+    // MARK: - Timer Logic
+    private func startTimer() {
+        timer = Timer.scheduledTimer(
+            timeInterval: 10.0,
+            target: self,
+            selector: #selector(repeatedFunction),
+            userInfo: nil,
+            repeats: true
+        )
+        RunLoop.main.add(timer!, forMode: .common)
+    }
+
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+
+    @objc private func repeatedFunction() {
+        print("\(Date())")
+        triggerCurrencyConversion()
+    }
 
     // MARK: - Conversion Logic
     private func triggerCurrencyConversion() {
@@ -107,6 +137,7 @@ class CurrencyTableViewModel {
                 fromAmount: fromAmount
             )
 
+            self?.delegate?.didStartLoading(true)
             self?.convertCurrency(request)
         }
 
@@ -118,6 +149,8 @@ class CurrencyTableViewModel {
         DispatchQueue.global().async { [weak self] in
             self?.service.convert(request: request) { result in
                 DispatchQueue.main.async {
+                    self?.delegate?.didStartLoading(false)
+                    
                     switch result {
                     case .success(let conversionResult):
                         self?.sections[.targetCurrency]?.amount = "\(conversionResult.amount)"

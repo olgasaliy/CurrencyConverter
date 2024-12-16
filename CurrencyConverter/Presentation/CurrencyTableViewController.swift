@@ -9,12 +9,15 @@ import UIKit
 
 class CurrencyTableViewController: UITableViewController {
     var viewModel: CurrencyTableViewModel?
+    
+    private var activityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Currency Converter"
         setupTableView()
+        setupActivityIndicator()
         registerTapRecognizer()
     }
 
@@ -23,6 +26,13 @@ class CurrencyTableViewController: UITableViewController {
         tableView.register(CurrencyCell.self, forCellReuseIdentifier: CurrencyCell.reuseIdentifier)
         tableView.register(CurrencyAmountCell.self, forCellReuseIdentifier: CurrencyAmountCell.reuseIdentifier)
         tableView.register(CurrencyPickerCell.self, forCellReuseIdentifier: CurrencyPickerCell.reuseIdentifier)
+    }
+    
+    private func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator.hidesWhenStopped = true
+        let activityItem = UIBarButtonItem(customView: activityIndicator)
+        navigationItem.rightBarButtonItem = activityItem
     }
 
     private func registerTapRecognizer() {
@@ -110,6 +120,14 @@ extension CurrencyTableViewController: CurrencyTableViewModelDelegate {
 
     func didErrorOccur(error: String) {
         showErrorAlert(message: error)
+    }
+    
+    func didStartLoading(_ startLoading: Bool) {
+        if startLoading {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
     }
 }
 
