@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Currency: Codable {
+struct Currency: Codable, Equatable {
     let name: String
     let code: String
     let symbol: String

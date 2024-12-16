@@ -13,7 +13,7 @@ struct CurrencyConversionRequest {
     let fromAmount: Double
 }
 
-struct CurrencyConversionResponse: Codable {
+struct CurrencyConversionResponse: Codable, Equatable {
     let amount: String
     let currency: String
 }
