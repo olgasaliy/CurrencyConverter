@@ -44,6 +44,10 @@ class CurrencyTableViewController: UITableViewController {
     @objc private func hideKeyboard() {
         view.endEditing(true)
     }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
 
     // MARK: - TableView Data Source
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
